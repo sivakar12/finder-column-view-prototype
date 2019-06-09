@@ -1,11 +1,11 @@
-import { pathToFileURL } from "url";
+import _ from 'lodash'
 
 export default class State {
     
     path: string[];
     folderTree: object;
     constructor() {
-        this.path = ['/']
+        this.path = ['/', 'folder1', 'folder12']
         this.folderTree =  {
             '/': {
                 'folder1': {
@@ -19,6 +19,18 @@ export default class State {
                 }
             }
         }
+    }
+
+    getFileListAtLevel(level: number) {
+        const path = _.take(this.path, level + 1)
+        const subTree =  _.get(this.folderTree, path)
+        return Object.keys(subTree)
+    }
+
+    getFileListUptoLevel(index: number) {
+        return  _.range(0, index).map(n => 
+            this.getFileListAtLevel(n)
+        )
     }
     
     openFolder(folder: string):void {

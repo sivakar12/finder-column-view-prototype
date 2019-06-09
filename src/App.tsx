@@ -2,7 +2,7 @@ import React from 'react'
 import Context from './StateContext'
 import State from './State'
 import ColumnView from './ColumnView'
-
+import './App.css'
 const App: React.FC = () => {
 
   return (

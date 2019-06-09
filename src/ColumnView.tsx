@@ -13,7 +13,6 @@ const ColumnView: React.FC = () => {
     const contentsAndTitles = _.zip(titles, contents)
     return (
         <div className="columns">
-            {JSON.stringify(state.folderTree)}
 
             {contentsAndTitles.map(([title, content], index) => 
                 <Column title={title || 'dummy title'} content={content || []} key={index}/>

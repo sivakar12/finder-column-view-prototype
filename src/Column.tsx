@@ -7,7 +7,14 @@ type ColumnProps = {
 
 const Column: FunctionComponent<ColumnProps> = (props) => {
     return (
-        <div>{JSON.stringify(props)}</div>
+        <div className="column">
+            <div className="column-title">{props.title}</div>
+            <div className="items">
+                {props.content.map((item, index) => 
+                    <div className="item">{item}</div>
+                )}
+            </div>
+        </div>
     )
 }
 

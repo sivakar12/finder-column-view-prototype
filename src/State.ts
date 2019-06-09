@@ -5,12 +5,16 @@ export default class State {
     path: string[];
     folderTree: object;
     constructor() {
-        this.path = ['/', 'folder1', 'folder12']
+        this.path = ['/', 'folder1', 'folder12', 'folder121']
         this.folderTree =  {
             '/': {
                 'folder1': {
                     'folder11': { 'file111': true },
-                    'folder12': { 'file121': true },
+                    'folder12': { 
+                        'folder121': {
+                            'file1211': true
+                        } 
+                    },
                     'folder13': { 'file131': true }
                 },
                 'folder2': {

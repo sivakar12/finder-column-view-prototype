@@ -1,4 +1,17 @@
 import React from 'react'
-import State from './State'
+type ColumnDetails = {
+    path: string[]
+    content: string[]
+    level: number
+  }
+type StateContext = {
+    path: string[]
+    changePath(path: string[]): void
+    getColumnDetails(): ColumnDetails[]
+}
 
-export default React.createContext(new State)
+export default React.createContext<StateContext>({
+    path: ['daf'],
+    changePath(path) {},
+    getColumnDetails() { return []}
+})

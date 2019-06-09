@@ -19,7 +19,7 @@ const Column: FunctionComponent<ColumnDetails> = (props) => {
             <div className="column-title">{_.last(props.path)}</div>
             <div className="items">
                 {props.content.map((item, index) => 
-                    <div className="item" onClick={() => { handleClickItem(item)}}>{item}</div>
+                    <div className="item" onClick={() => { handleClickItem(item) }}>{item}</div>
                 )}
             </div>
         </div>

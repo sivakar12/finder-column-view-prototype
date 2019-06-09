@@ -7,12 +7,11 @@ import Column from './Column';
 
 const ColumnView: React.FC = () => {
 
-    const state: State  = useContext(StateContext)
+    const state  = useContext(StateContext)
     
     return (
         <div className="columns">
-            {JSON.stringify(state)}
-            {state.getColumnDetailsForLastThreeColumns().map((columnDetails, index) => 
+            {state.getColumnDetails().map((columnDetails, index) => 
                 <Column {...columnDetails} key={index}/>
             )}
         </div>

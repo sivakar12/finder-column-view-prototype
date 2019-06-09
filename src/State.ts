@@ -1,5 +1,11 @@
 import _ from 'lodash'
 
+export type ColumnDetails = {
+    path: string[]
+    content: string[]
+    level: number
+}
+
 export default class State {
     
     path: string[];
@@ -25,6 +31,20 @@ export default class State {
         }
     }
 
+    getColumnDetails(): ColumnDetails[] {
+        const levels = _.range(this.path.length)
+        const columnDetails = levels.map(level => ({
+            level,
+            content: this.getFileListAtLevel(level),
+            path: _.take(this.path, level + 1)
+        }))
+        return columnDetails 
+    }
+    
+    getColumnDetailsForLastThreeColumns() {
+        return _.takeRight(this.getColumnDetails(), 3)
+    }
+
     getFileListAtLevel(level: number) {
         const path = _.take(this.path, level + 1)
         const subTree =  _.get(this.folderTree, path)
@@ -36,11 +56,8 @@ export default class State {
             this.getFileListAtLevel(n)
         )
     }
-    
-    openFolder(folder: string):void {
-        this.path.push(folder)
-    }
-    goUp(): void {
-        this.path.pop()
+    changePath(path: string[]) {
+        this.path = path
+        console.log('Path set to ' + path)
     }
 }
